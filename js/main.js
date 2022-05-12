@@ -13,11 +13,19 @@ window.addEventListener('keydown', keydownHandler);
 window.addEventListener('keyup', keyUpHandler);
 window.addEventListener('resize', resizeHandler);
 
+window.addEventListener("touchstart", handleTouch);
+
+function handleTouch() {
+    if (!game.isStarted)
+        game.start();
+    window.removeEventListener("touchstart", handleTouch);
+    console.log('touch listener');
+}
+
 document.addEventListener('touchmove', (event) => {
     // If there's exactly one finger inside this element
     // if (event.targetTouches.length == 1) {
-    if (!game.isStarted)
-        game.start();
+
     let w = game.canvas.width;
     let scaleX = w / document.body.clientWidth;
     var touch = event.targetTouches[0];
