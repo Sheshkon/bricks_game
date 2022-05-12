@@ -16,6 +16,8 @@ window.addEventListener('resize', resizeHandler);
 document.addEventListener('touchmove', (event) => {
     // If there's exactly one finger inside this element
     // if (event.targetTouches.length == 1) {
+    if (!game.isStarted)
+        game.start();
     let w = game.canvas.width;
     let scaleX = w / document.body.clientWidth;
     var touch = event.targetTouches[0];
